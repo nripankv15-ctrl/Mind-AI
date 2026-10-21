@@ -1,0 +1,32 @@
+{
+  "name": "manymind-ai-desktop",
+  "version": "1.0.0",
+  "description": "ManyMind AI desktop wrapper for the deployed web app",
+  "main": "main.cjs",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "build:win": "electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "electron": "^36.0.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "ai.manymind.desktop",
+    "productName": "ManyMind AI",
+    "directories": { "output": "dist" },
+    "files": ["main.cjs", "package.json"],
+    "asar": true,
+    "win": {
+      "target": ["nsis"],
+      "artifactName": "ManyMind-AI-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  }
+}
